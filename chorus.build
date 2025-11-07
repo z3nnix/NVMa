@@ -1,0 +1,23 @@
+variables:
+  CC: "gcc"
+  LD: "gcc"
+  CFLAGS: "-c -Wall"
+  LDFLAGS: "-Wall"
+
+targets:
+  all:
+    deps: [nvma.bin]
+
+  nvma.bin:
+    deps: [main.o]
+    cmds:
+      - "${LD} ${LDFLAGS} -o ${@} ${^} -lc"
+      - "rm -rf *.o nvma.bin"
+
+  main.o:
+    cmds:
+      - "${CC} ${CFLAGS} src/main.c -o ${@}"
+
+  clean:
+    cmds:
+      - "rm -rf *.o nvma.bin"
