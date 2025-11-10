@@ -45,9 +45,15 @@ int find_syscall(const char *name) {
 }
 
 int parse_number(const char *str) {
-    if (strncmp(str, "0x", 2) == 0) {
+    if (str[0] == '\'' && str[1] != '\0' && str[2] == '\'') {
+        return (int)str[1];
+    }
+
+    else if (strncmp(str, "0x", 2) == 0) {
         return (int)strtol(str + 2, NULL, 16);
-    } else {
+    } 
+
+    else {
         return atoi(str);
     }
 }
