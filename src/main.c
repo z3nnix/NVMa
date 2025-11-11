@@ -101,6 +101,8 @@ void free_labels() {
 }
 
 int get_instruction_size(char *tokens[], int token_count) {
+    if (token_count == 0) return 0;
+    
     if (strcasecmp(tokens[0], ".NVM0") == 0) return 0;
     else if (strcasecmp(tokens[0], "hlt") == 0 || strcasecmp(tokens[0], "halt") == 0) return 1;
     else if (strcasecmp(tokens[0], "nop") == 0) return 1;
@@ -124,18 +126,18 @@ int get_instruction_size(char *tokens[], int token_count) {
     else if (strcasecmp(tokens[0], "gt") == 0) return 1;
     else if (strcasecmp(tokens[0], "lt") == 0) return 1;
     // Flow control
-    else if (strcasecmp(tokens[0], "jmp") == 0 && token_count >= 2) return 3;
-    else if (strcasecmp(tokens[0], "jz") == 0 && token_count >= 2) return 3;
-    else if (strcasecmp(tokens[0], "jnz") == 0 && token_count >= 2) return 3;
-    else if (strcasecmp(tokens[0], "call") == 0 && token_count >= 2) return 3;
+    else if (strcasecmp(tokens[0], "jmp") == 0) return 3;
+    else if (strcasecmp(tokens[0], "jz") == 0) return 3;
+    else if (strcasecmp(tokens[0], "jnz") == 0) return 3;
+    else if (strcasecmp(tokens[0], "call") == 0) return 3;
     else if (strcasecmp(tokens[0], "ret") == 0) return 1;
     // Memory
-    else if (strcasecmp(tokens[0], "load") == 0 && token_count >= 2) return 2;
-    else if (strcasecmp(tokens[0], "store") == 0 && token_count >= 2) return 2;
+    else if (strcasecmp(tokens[0], "load") == 0) return 2;
+    else if (strcasecmp(tokens[0], "store") == 0) return 2;
     else if (strcasecmp(tokens[0], "load_abs") == 0) return 1;
     else if (strcasecmp(tokens[0], "store_abs") == 0) return 1;
     // System calls
-    else if (strcasecmp(tokens[0], "syscall") == 0 && token_count >= 2) return 2;
+    else if (strcasecmp(tokens[0], "syscall") == 0) return 2;
     else if (strcasecmp(tokens[0], "break") == 0) return 1;
     
     return 0;
