@@ -22,6 +22,8 @@ Syscall syscalls[] = {
     {"drv_call", 0x08},
     {"msg_send", 0x09},
     {"msg_recieve", 0x0A},
+    {"inb", 0x0B},
+    {"outb", 0x0C},
     {NULL, 0}
 };
 
