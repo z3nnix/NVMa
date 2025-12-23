@@ -26,6 +26,7 @@ Syscall syscalls[] = {
     {"msg_recieve", 0x0B},
     {"inb", 0x0C},
     {"outb", 0x0D},
+    {"print", 0x0E},
     {NULL, 0}
 };
 
