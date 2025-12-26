@@ -13,7 +13,7 @@ typedef struct {
 
 Syscall syscalls[] = {
     {"exit", 0x00},
-    {"exec", 0x01},
+    {"spawn", 0x01},
     {"open", 0x02},
     {"read", 0x03},
     {"write", 0x04},
